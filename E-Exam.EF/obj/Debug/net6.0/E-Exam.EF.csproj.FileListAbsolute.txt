@@ -1,0 +1,17 @@
+E:\Asp.net Projects\E-Exam\E-Exam.EF\bin\Debug\net6.0\E-Exam.EF.deps.json
+E:\Asp.net Projects\E-Exam\E-Exam.EF\bin\Debug\net6.0\E-Exam.EF.runtimeconfig.json
+E:\Asp.net Projects\E-Exam\E-Exam.EF\bin\Debug\net6.0\E-Exam.EF.dll
+E:\Asp.net Projects\E-Exam\E-Exam.EF\bin\Debug\net6.0\E-Exam.EF.pdb
+E:\Asp.net Projects\E-Exam\E-Exam.EF\bin\Debug\net6.0\E-Exam.Core.dll
+E:\Asp.net Projects\E-Exam\E-Exam.EF\bin\Debug\net6.0\E-Exam.Core.pdb
+E:\Asp.net Projects\E-Exam\E-Exam.EF\obj\Debug\net6.0\E-Exam.EF.csproj.AssemblyReference.cache
+E:\Asp.net Projects\E-Exam\E-Exam.EF\obj\Debug\net6.0\E-Exam.EF.GeneratedMSBuildEditorConfig.editorconfig
+E:\Asp.net Projects\E-Exam\E-Exam.EF\obj\Debug\net6.0\E-Exam.EF.AssemblyInfoInputs.cache
+E:\Asp.net Projects\E-Exam\E-Exam.EF\obj\Debug\net6.0\E-Exam.EF.AssemblyInfo.cs
+E:\Asp.net Projects\E-Exam\E-Exam.EF\obj\Debug\net6.0\E-Exam.EF.csproj.CoreCompileInputs.cache
+E:\Asp.net Projects\E-Exam\E-Exam.EF\obj\Debug\net6.0\E-Exam.EF.csproj.CopyComplete
+E:\Asp.net Projects\E-Exam\E-Exam.EF\obj\Debug\net6.0\E-Exam.EF.dll
+E:\Asp.net Projects\E-Exam\E-Exam.EF\obj\Debug\net6.0\refint\E-Exam.EF.dll
+E:\Asp.net Projects\E-Exam\E-Exam.EF\obj\Debug\net6.0\E-Exam.EF.pdb
+E:\Asp.net Projects\E-Exam\E-Exam.EF\obj\Debug\net6.0\E-Exam.EF.genruntimeconfig.cache
+E:\Asp.net Projects\E-Exam\E-Exam.EF\obj\Debug\net6.0\ref\E-Exam.EF.dll

@@ -1,0 +1,251 @@
+body {
+    font-family: Tahoma, sans-serif;
+}
+.home-decor .decor img {
+    width: 150px !important;
+}
+
+.navbar-light .navbar-nav .nav-item a.active {
+    color: #ff4c3b !important;
+}
+
+.subjects .card {
+    border: none;
+    box-shadow: 0 0 10px #cccccc;
+    transition: all .4s;
+}
+
+.subjects .card:hover {
+    transform: translateY(-4px);
+}
+
+.subjects .card .img-box {
+    width: 70px;
+    height: 70px;
+    padding: 5px;
+    border-radius: 50%;
+    border: 1px solid #e7e7e7;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+.subjects .card .img-box img {
+    border-radius: 50%;
+}
+
+.subjects .card .title {
+    font-size: 17px;
+    font-family:Tahoma, sans-serif;
+    font-weight: bold;
+    color: #ff4c3b;
+}
+
+.subjects .card .name,
+.subjects .card .info {
+    font-family:Tahoma, sans-serif;
+}
+
+.subjects .card .name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.subjects .card {
+    margin-bottom: 34px;
+}
+
+.subjects .card .start {
+    font-size: 17px;
+    font-family:Tahoma, sans-serif;
+    background-color: white;
+    color: #ff4c3b;
+    font-weight: bold;
+    padding: 5px 12px;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+    border: 1px solid #ff4c3b;
+    transition: all .4s;
+}
+
+.subjects .card .start:hover {
+    background-color: #ff4c3b;
+    color: white;
+}
+
+@media (max-width: 992px) {
+    .subjects .card-group {
+        flex-direction: column;
+    }
+}
+
+.footer {
+    padding-bottom: 60px;
+    padding-top: 60px;
+    border-top: 1px solid #ff4c3b;
+    margin-top: 60px;
+}
+
+@media (max-width: 992px){
+    .footer {
+        padding-bottom: 20px;
+    }
+}
+
+/* =================================== */
+
+.footer .info h2 {
+    font-size: 30px;
+    font-weight: 500;
+    color: #4d4d4d;
+}
+
+.footer .info h2 span {
+    font-weight: 300;
+    color: #ff4c3b;
+}
+
+.footer .info a {
+    color: #ff4c3b;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.footer .info i {
+    color: #ff4c3b;
+}
+
+/* ================================= */
+
+.footer .helpful h4 {
+    font-size: 22px;
+    color: #ff4c3b;
+    font-weight: 500;
+    margin-bottom: 32px;
+}
+
+@media (max-width: 992px){
+    .footer .helpful h4 {
+        margin-bottom: 15px;
+    }
+}
+
+/* ================================= */
+
+.footer .helpful .links ul li {
+    font-size: 16px;
+    line-height: 2.2;
+    font-weight: bold;
+    color: rgb(71, 71, 71);
+}
+
+.footer .helpful .links ul li:before {
+    font-family: 'Font Awesome 5 free';
+    content: "\f054";
+    margin-right: 5px;
+    color: #ff4c3b;
+    font-size: 12px;
+    position: relative;
+    top: -1px;
+}
+
+.footer .contact-us h4 {
+    margin-bottom: 22px;
+    color: #ff4c3b;
+    font-weight: 500;
+}
+
+/* ======================================== */
+
+.footer .contact-us ul li {
+    font-size: 16px;
+    line-height: 2.3;
+    font-weight: 500;
+    color: rgb(80, 80, 80);
+}
+
+@media (max-width: 992px){
+    .footer .contact-us h4 {
+        margin-bottom: 5px;
+    }
+
+    .footer .contact-us ul li {
+        line-height: 3;
+    }
+}
+
+/* ======================================== */
+
+.footer .contact-us ul li a {
+    font-size: 14px;
+    color: #ff4c3b;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* End Footer */
+
+/* =========================================================================================================================== */
+
+/* Start CopyRight */
+
+.copy {
+    border-top: 1.5px solid rgb(206, 206, 206);
+}
+
+.copy .right {
+    color: #7c7c7c;
+    font-weight: 500;
+}
+
+/* End CopyRight */
+/* ======================================== */
+/* Start Exam */
+.exam .card-header {
+    font-size: 22px;
+}
+
+@media (max-width: 576px) {
+    .exam .card-header {
+        font-size: 16px;
+    }
+    .exam .card-body div {
+        font-size: 14px;
+    }
+}
+
+.exam input[type='radio'] {
+    outline: none;
+}
+
+/* End Exam */
+/* ======================================== */
+
+.profile .card-header {
+    font-size: 22px;
+}
+
+.profile .view {
+    background-color: #ffe4c4;
+    padding: 9px 12px;
+    border-radius: 6px;
+}
+
+.profile td span {
+    color: #ff4c3b;
+    font-size: 20px;
+}
+
+.dropdown {
+    margin: 3px 0 0 90px;
+    font-weight: 700;
+}
+@media(max-width: 992px) {
+    .dropdown {
+        margin: 10px 0;
+    }
+    .dropdown-menu {
+        left: 45%;
+    }
+}

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using E_Exam.Core.Interfaces;
+using E_Exam.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +10,9 @@ namespace E_Exam.Core
 {
     public interface IUnitOfWork : IDisposable
     {
-        //IBaseRepository<Author> Authors { get; }
-        //IBaseRepository<Book> Books { get; }
+        IBaseRepository<TbLevel> TbLevels { get; }
+        IBaseRepository<TbDepartment> TbDepartments { get; }
+        IBaseRepository<TbDepartmentLevel> TbDepartmentLevels { get; }
 
         int Complete();
     }

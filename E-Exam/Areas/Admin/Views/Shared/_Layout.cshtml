@@ -1,38 +1,27 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>@ViewData["Title"] | Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"] | Dashboard</title>
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="~/Admin/plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="~/Admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- iCheck -->
-    <link rel="stylesheet" href="~/Admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="~/Admin/plugins/jqvmap/jqvmap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="~/Admin/dist/css/adminlte.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="~/Admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Daterange picker -->
-    <link rel="stylesheet" href="~/Admin/plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-    <link rel="stylesheet" href="~/Admin/plugins/summernote/summernote-bs4.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Admin/plugins/fontawesome-free/css/all.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/Admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/Admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/Admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Admin/dist/css/adminlte.min.css">
+    @RenderSection("Styles", required: false);
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-  <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="~/Admin/docs/assets/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-  </div>
+
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -42,10 +31,10 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Dashboard</a>
+        <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="nav-link">Dashboard</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">WebSite</a>
+        <a href="/" class="nav-link">WebSite</a>
       </li>
     </ul>
 
@@ -73,19 +62,18 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
+            <a asp-controller="Levels" asp-action="Index" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 Levels
-                <span class="badge badge-info right">4</span>
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a asp-controller="Departments" asp-action="Index" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
-                All Users
+                Departments
               </p>
             </a>
           </li>
@@ -117,7 +105,7 @@
             <a href="pages/kanban.html" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
-                Departments
+                All Users
               </p>
             </a>
           </li>
@@ -138,29 +126,9 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
 
-    <!-- Main content -->
-    
-    @RenderBody();
+    @RenderBody()
 
-    <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
@@ -178,40 +146,30 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
-<!-- jQuery -->
-<script src="~/Admin/plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="~/Admin/plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
-<!-- Bootstrap 4 -->
-<script src="~/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="~/Admin/plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline -->
-<script src="~/Admin/plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<script src="~/Admin/plugins/jqvmap/jquery.vmap.min.js"></script>
-    <script src="~/Admin/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="plugins/jquery-knob/jquery.knob.min.js"></script>
-<!-- daterangepicker -->
-<script src="~/Admin/plugins/moment/moment.min.js"></script>
-<script src="~/Admin/plugins/daterangepicker/daterangepicker.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="~/Admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Summernote -->
-<script src="~/Admin/plugins/summernote/summernote-bs4.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="~/Admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- AdminLTE App -->
-<script src="~/Admin/dist/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="~/Admin/dist/js/demo.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="~/Admin/dist/js/pages/dashboard.js"></script>
+    <!-- jQuery -->
+    <script src="~/Admin/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Admin/plugins/bootstrap/js/bootstrap.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="~/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/Admin/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/Admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/Admin/plugins/jszip/jszip.min.js"></script>
+    <script src="~/Admin/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="~/Admin/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="~/Admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/Admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="~/Admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="~/Admin/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Admin/dist/js/demo.js"></script>
+    <!-- Page specific script -->
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

@@ -1,0 +1,21 @@
+﻿@if (TempData["Success"] != null)
+{
+    <script type="text/javascript">
+        toastr.success('@TempData["Success"]');
+    </script>
+
+}
+@if (TempData["Error"] != null)
+{
+    <script type="text/javascript">
+        toastr.error('@TempData["Error"]');
+    </script>
+
+}
+@if (TempData["Warning"] != null)
+{
+    <script type="text/javascript">
+        toastr.warning('@TempData["Warning"]');
+    </script>
+
+}

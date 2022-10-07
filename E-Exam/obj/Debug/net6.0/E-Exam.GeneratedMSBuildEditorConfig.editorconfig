@@ -15,8 +15,32 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = E:\Asp.net Projects\E-Exam\E-Exam
 build_property._RazorSourceGeneratorDebug = 
 
+[E:/Asp.net Projects/E-Exam/E-Exam/Areas/Admin/Views/Departments/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGVwYXJ0bWVudHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Asp.net Projects/E-Exam/E-Exam/Areas/Admin/Views/Departments/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGVwYXJ0bWVudHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/Asp.net Projects/E-Exam/E-Exam/Areas/Admin/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Asp.net Projects/E-Exam/E-Exam/Areas/Admin/Views/Levels/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGV2ZWxzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Asp.net Projects/E-Exam/E-Exam/Areas/Admin/Views/Levels/EditDepartmentLevel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGV2ZWxzXEVkaXREZXBhcnRtZW50TGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Asp.net Projects/E-Exam/E-Exam/Areas/Admin/Views/Levels/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGV2ZWxzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Asp.net Projects/E-Exam/E-Exam/Areas/Admin/Views/Shared/_Notification.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Asp.net Projects/E-Exam/E-Exam/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]

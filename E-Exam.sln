@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-Exam", "E-Exam\E-Exam.csproj", "{003FBED7-DEF3-4AC3-9DAC-B0906C6CABDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E-Exam", "E-Exam\E-Exam.csproj", "{003FBED7-DEF3-4AC3-9DAC-B0906C6CABDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-Exam.Core", "E-Exam.Core\E-Exam.Core.csproj", "{CF97F30E-A07C-4EC6-AA35-ECEE02CE7BF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E-Exam.Core", "E-Exam.Core\E-Exam.Core.csproj", "{CF97F30E-A07C-4EC6-AA35-ECEE02CE7BF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-Exam.EF", "E-Exam.EF\E-Exam.EF.csproj", "{D6EFF1AA-2337-4DD2-B5F3-2D5A1DA024BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E-Exam.EF", "E-Exam.EF\E-Exam.EF.csproj", "{D6EFF1AA-2337-4DD2-B5F3-2D5A1DA024BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

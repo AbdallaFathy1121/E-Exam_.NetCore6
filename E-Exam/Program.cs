@@ -1,5 +1,6 @@
 using E_Exam.Core;
 using E_Exam.EF;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Add UnitOfWork using Dependence Injection
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+
+// Use AutoMapper
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
+
 
 
 var app = builder.Build();
@@ -39,7 +46,7 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
      name: "areas",
-     pattern: "{area=exists}/{controller=Home}/{action=Index}");
+     pattern: "{area=exists}/{controller=Home}/{action=Index}/{id?}");
 
     endpoints.MapControllerRoute(
      name: "default",

@@ -12,7 +12,7 @@ namespace E_Exam.Core.Interfaces
         Task<IEnumerable<T>> GetAllAsync(string[]? includes = null);
         Task<IEnumerable<T>> GetWhereAsync(Expression<Func<T, bool>> criteria, string[]? includes = null);
         Task<T> GetFirstOrDefaultAsync(Expression<Func<T, bool>> criteria, string[]? includes = null);
-        IQueryable<T> GetLeftJoinWithTbDepartmentLevel(int levelId);
+        
         Task<bool> FindAsync(Expression<Func<T, bool>> criteria);
         Task<bool> AddAsync(T entity);
         bool Update(T entity);

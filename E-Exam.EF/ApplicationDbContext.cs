@@ -1,4 +1,5 @@
 ﻿using E_Exam.Core.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,17 +9,15 @@ using System.Threading.Tasks;
 
 namespace E_Exam.EF
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        internal readonly object model;
-
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) :base(options)
         {
         }
 
-        public virtual DbSet<TbLevel> TbLevels { get; set; }
-        public virtual DbSet<TbDepartment> TbDepartments { get; set; }
-        public virtual DbSet<TbDepartmentLevel> TbDepartmentLevels { get; set; }
+        public DbSet<TbLevel> TbLevels { get; set; }
+        public DbSet<TbDepartment> TbDepartments { get; set; }
+        public DbSet<TbDepartmentLevel> TbDepartmentLevels { get; set; }
 
 
     }

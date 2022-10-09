@@ -1,49 +1,113 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - E_Exam</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/E_Exam.styles.css" asp-append-version="true" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-Exam">
+    <meta name="keywords" content="E-Exam">
+    <meta name="author" content="E-Exam">
+    <link rel="icon" href="~/assets/logo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="~/assets/logo.png" type="image/x-icon" />
+
+    <!--Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/bootstrap.css">
+
+    <!-- Style css -->
+    <link rel="stylesheet" href="~/assets/css/landing_page.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+
+    <!-- animation css -->
+    <link rel="stylesheet" href="~/assets/css/animate.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/fontawesome.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/themify-icons.css">
+
+    @RenderSection("Styles", required: false)
+
+    <title>Smart Exam</title>
+
 </head>
-<body>
+<body data-spy="scroll" data-target="#scroll-spy">
+
+    <!--header start-->
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">E_Exam</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col p-0">
+                    <div class="top-header">
+                        <div class="logo pl-2">
+                            <a class="navbar-brand" href="index.html">
+                                <img style="width: 50px;" src="assets/logo.png"
+                                     alt="logo">
+                            </a>
+                        </div>
+                        <div class="main-menu mx-auto" id="nav">
+                            <nav id="navbar-example2" class="navbar navbar-expand-lg navbar-light">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                        data-target="#scroll-spy" aria-controls="scroll-spy" aria-expanded="false"
+                                        aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse" id="scroll-spy">
+                                    <ul class="navbar-nav mx-auto nav">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" asp-controller="Home" asp-action="Index">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" asp-controller="Subjects" asp-action="Index">Subjects</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" asp-controller="Account" asp-action="Index">My Account</a>
+                                        </li>
+                                    </ul>
+                                    <div class="dropdown">
+                                        <a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+                                            Register
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <a class="dropdown-item" asp-controller="Users" asp-action="RegisterStudent">Register For Student</a>
+                                            <a class="dropdown-item" asp-controller="Users" asp-action="RegisterDoctor">Register For Doctor</a>
+                                            <a class="dropdown-item" asp-controller="Users" asp-action="Login">LogIn</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - E_Exam - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    </header>
+    <!--header end-->
+    
+    @RenderBody()
+
+    <!-- latest jquery-->
+    <script src="~/assets/js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap js-->
+    <script src="~/assets/js/bootstrap.js"></script>
+    <!-- popper js-->
+    <script src="~/assets/js/popper.min.js"></script>
+    <!-- wow js-->
+    <script src="~/assets/js/wow.min.js"></script>
+    <!-- lazyload js-->
+    <script src="~/assets/js/lazysizes.min.js"></script>
+    <!-- script js-->
+    <script src="~/assets/js/landing-script.js"></script>
+
+    <script>
+        new WOW().init();
+    </script>
+
+    @RenderSection("Scripts", required: false);
+
 </body>
 </html>

@@ -11,7 +11,7 @@ namespace E_Exam.Core
     public interface IUnitOfWork : IDisposable
     {
         IBaseRepository<TbLevel> TbLevels { get; }
-        IBaseRepository<TbDepartment> TbDepartments { get; }
+        IDepartmentRepository TbDepartments { get; }
         IBaseRepository<TbDepartmentLevel> TbDepartmentLevels { get; }
 
         int Complete();

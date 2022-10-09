@@ -2,6 +2,7 @@
 using E_Exam.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -103,19 +104,5 @@ namespace E_Exam.EF.Repositories
             }
         }
 
-        public IQueryable<T> GetLeftJoinWithTbDepartmentLevel(int levelId)
-        {
-            var department = (from d in context.TbDepartments
-                             join dl in context.TbDepartmentLevels
-                             on d.Id equals dl.DepartmentId
-                             into groub
-                             from res in groub.DefaultIfEmpty()
-                             where res.LevelId != levelId
-                             select d).Distinct();
-
-            IQueryable<T> t = (IQueryable<T>)department;
-
-            return t;
-        }
     }
 }

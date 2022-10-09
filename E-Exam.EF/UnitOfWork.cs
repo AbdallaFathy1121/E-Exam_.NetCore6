@@ -14,13 +14,13 @@ namespace E_Exam.EF
     {
         private readonly ApplicationDbContext context;
         public IBaseRepository<TbLevel> TbLevels { get; private set; }
-        public IBaseRepository<TbDepartment> TbDepartments { get; private set; }
+        public IDepartmentRepository TbDepartments { get; private set; }
         public IBaseRepository<TbDepartmentLevel> TbDepartmentLevels { get; private set; }
         public UnitOfWork(ApplicationDbContext context)
         {
             this.context = context;
             TbLevels = new BaseRepository<TbLevel>(context);
-            TbDepartments = new BaseRepository<TbDepartment>(context);
+            TbDepartments = new DepartmentRepository(context);
             TbDepartmentLevels = new BaseRepository<TbDepartmentLevel>(context);
         }
 

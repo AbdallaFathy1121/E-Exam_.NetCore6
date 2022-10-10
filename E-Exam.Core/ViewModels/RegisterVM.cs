@@ -10,13 +10,19 @@ namespace E_Exam.Core.ViewModels
 {
     public class RegisterStudentVM
     {
-        [Required(ErrorMessage = "Please Enter Your Name")]
+        [Required(ErrorMessage = "Please Enter your Name")]
         public string FullName { get; set; }
 
         [Required(ErrorMessage = "You Should Type Email Address")]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "Please Select your Level")]
         public int LevelId { get; set; }
+
+        [Required(ErrorMessage = "Please Select your Department")]
         public int DepartmentId { get; set; }
+
+        [Required(ErrorMessage ="Please Enter your Password")]
         public string Password { get; set; }
 
         [Compare("Password", ErrorMessage = "Confirm Password dosent match with Password")]
@@ -25,5 +31,6 @@ namespace E_Exam.Core.ViewModels
 
         // Relations
         public IEnumerable<TbDepartment>? Departments { get; set; } = new List<TbDepartment>();
+        public IEnumerable<TbLevel>? Levels { get; set; }
     }
 }

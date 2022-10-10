@@ -1,5 +1,6 @@
 ﻿using E_Exam.Core.Interfaces;
 using E_Exam.Core.Models;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,30 +19,24 @@ namespace E_Exam.EF.Repositories
         }
 
 
-        public IEnumerable<TbDepartment> GetLeftJoinWithTbDepartmentLevel(int levelId)
+        public async Task<IEnumerable<TbDepartment>> GetDepartmentsThatNotInDepartmentLevel(int levelId)
         {
-            var department = (from d in _context.TbDepartments
-                              join dl in _context.TbDepartmentLevels
-                              on d.Id equals dl.DepartmentId
-                              into groub
-                              from res in groub.DefaultIfEmpty()
-                              where res.LevelId != levelId
-                              select d).Distinct().AsNoTracking().ToList();
+            var LevelIdParam = new SqlParameter("@LevelId", levelId);
 
-            return department;
+            var result = await _context.TbDepartments
+                .FromSqlRaw($"SPGetDepartmentsThatNotInDepartmentLevel @LevelId", LevelIdParam).ToListAsync();
+            
+            return result;
         }
 
-        public IEnumerable<TbDepartment> GetDepartmentsWithByLevelId(int levelId)
+        public async Task<IEnumerable<TbDepartment>> GetDepartmentsWithByLevelId(int levelId)
         {
-            var department = (from d in _context.TbDepartments
-                              join dl in _context.TbDepartmentLevels
-                              on d.Id equals dl.DepartmentId
-                              into groub
-                              from res in groub.DefaultIfEmpty()
-                              where res.LevelId == levelId
-                              select d).Distinct().AsNoTracking().ToList();
+            var LevelIdParam = new SqlParameter("@LevelId", levelId);
 
-            return department;
+            var result = await _context.TbDepartments
+                .FromSqlRaw($"SP_GetDepartmentsWithLevelId @LevelId", LevelIdParam).ToListAsync();
+
+            return result;
         }
       
     }

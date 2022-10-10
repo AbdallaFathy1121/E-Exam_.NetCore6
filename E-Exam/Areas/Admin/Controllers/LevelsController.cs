@@ -119,7 +119,7 @@ namespace E_Exam.Areas.Admin.Controllers
             }
             else
             {
-                var department = _unitOfWork.TbDepartments.GetLeftJoinWithTbDepartmentLevel(id);
+                var department = await _unitOfWork.TbDepartments.GetDepartmentsThatNotInDepartmentLevel(id);
 
                 model.LstDepartmentVM = _mapper.Map<IEnumerable<DepartmentVM>>(department);
                 model.LstDepartmentLevel = departmentLevel;

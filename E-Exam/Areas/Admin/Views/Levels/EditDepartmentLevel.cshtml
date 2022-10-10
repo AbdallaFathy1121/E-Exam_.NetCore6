@@ -48,26 +48,13 @@
                         {
                             @foreach (var dept in Model.LstDepartmentVM)
                             {
-                                @if (Model?.LstDepartmentLevel is not null && Model.LstDepartmentLevel.Where(a=>a.DepartmentId == dept.Id).FirstOrDefault() == null){
-                                    <form role="form" method="post" asp-action="AddDepartment">
-                                        <input type="hidden" name="departmentId" value="@dept.Id">
-                                        <input type="hidden" name="levelId" value="@ViewBag.LevelId">
-                                        <button type="submit" class="btn btn-success">
-                                            + @dept.Name
-                                        </button>
-                                    </form>
-                                }
-
-                                @if (Model?.LstDepartmentLevel is null) {
-                                    <form role="form" method="post" asp-action="AddDepartment">
-                                        <input type="hidden" name="departmentId" value="@dept.Id">
-                                        <input type="hidden" name="levelId" value="@ViewBag.LevelId">
-                                        <button type="submit" class="btn btn-success">
-                                            + @dept.Name
-                                        </button>
-                                    </form>
-                                }
-                       
+                                <form role="form" method="post" asp-action="AddDepartment">
+                                    <input type="hidden" name="departmentId" value="@dept.Id">
+                                    <input type="hidden" name="levelId" value="@ViewBag.LevelId">
+                                    <button type="submit" class="btn btn-success">
+                                        + @dept.Name
+                                    </button>
+                                </form>
                             }
                         }
                     </div>

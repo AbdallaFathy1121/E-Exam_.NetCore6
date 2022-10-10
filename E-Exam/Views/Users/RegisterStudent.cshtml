@@ -1,7 +1,7 @@
-﻿@model RegisterStudentVM
-@{
+﻿@{
     Layout = null;
 }
+@model RegisterStudentVM
 
 <html lang="en">
 <head>
@@ -19,13 +19,14 @@
 
     <!-- Main Css File -->
     <link rel="stylesheet" href="~/assets/css/login-register.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
     <style>
         .form-select:after {
             display: none;
         }
         .login form .form-group input {
-            padding: 0.375rem 0.75rem;
+            padding: 0.375rem 5px 0.375rem 43px;
         }
         .login .image-box {
             width: 80px;
@@ -52,7 +53,7 @@
             @*Full Name*@
             <div class="form-group">
                 <img src="~/assets/images/form/user.png" alt="">
-                <label for="exampleInputuser">FullName</label>
+                <label for="exampleInputuser">Full Name</label>
                 <input asp-for="FullName" type="text" class="form-control" id="exampleInputuser">
                 <span class="text-danger" asp-validation-for="FullName"></span>
             </div>
@@ -71,7 +72,7 @@
                 <div class="col-lg-6">
                     <div class="form-group form-select">
                         <label asp-for="LevelId">Level</label>
-                        <select class="form-control" asp-for="LevelId" asp-items="@(new SelectList(ViewBag.Levels, "Id","Name"))">
+                        <select class="form-control" asp-for="LevelId" asp-items="@(new SelectList(Model.Levels, "Id","Name"))">
                             <option></option>
                         </select>
                         <span class="text-danger" asp-validation-for="LevelId"></span>
@@ -126,6 +127,8 @@
     <script src="~/assets/js/popper.min.js"></script>
 
     <script src="~/assets/js/all.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script>
         $(document).ready(function(){
@@ -278,5 +281,10 @@
         );
 
     </script>
+
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+            await Html.RenderPartialAsync("_Notification");
+        }
 </body>
 </html>

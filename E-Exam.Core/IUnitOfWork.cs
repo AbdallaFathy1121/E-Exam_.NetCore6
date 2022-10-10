@@ -10,9 +10,10 @@ namespace E_Exam.Core
 {
     public interface IUnitOfWork : IDisposable
     {
-        IBaseRepository<TbLevel> TbLevels { get; }
+        ILevelRepository TbLevels { get; }
         IDepartmentRepository TbDepartments { get; }
-        IBaseRepository<TbDepartmentLevel> TbDepartmentLevels { get; }
+        IDepartmentLevelRepository TbDepartmentLevels { get; }
+
 
         int Complete();
     }

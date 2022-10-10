@@ -1,0 +1,247 @@
+﻿@model RegisterDoctorVM
+@{
+    Layout = null;
+}
+
+<html lang="en">
+<head>
+
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="~/assets/logo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="~/assets/logo.png" type="image/x-icon" />
+
+    <!-- Vendor Css Files -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="~/assets/boxicons/css/boxicons.min.css">
+
+    <!-- Main Css File -->
+    <link rel="stylesheet" href="~/assets/css/login-register.css">
+
+    <style>
+        .form-select:after {
+            display: none;
+        }
+        .login form .form-group input {
+            padding: 0.375rem 5px 0.375rem 43px;
+        }
+        .login .image-box {
+            width: 80px;
+        }
+    </style>
+
+    <title>Register - Smart Exam</title>
+
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <!-- ------------------------------------------------------------------------------ -->
+    <!-- Start Register -->
+    <div class="register login">
+        <div class="image-box mb-2">
+            <img src="~/assets/logo.png" alt="">
+        </div>
+        <h4 class=" text-center">Register For Student</h4>
+        <br>
+        <form asp-controller="Users" asp-action="SaveDoctor" role="form" method="post" enctype="multipart/form-data">
+
+            @*Full Name*@
+            <div class="form-group">
+                <img src="~/assets/images/form/user.png" alt="">
+                <label for="exampleInputuser">Full Name</label>
+                <input asp-for="FullName" type="text" class="form-control" id="exampleInputuser">
+                <span class="text-danger" asp-validation-for="FullName"></span>
+            </div>
+
+            @*Email Address*@
+            <div class="form-group">
+                <img src="~/assets/images/form/email.png" alt="">
+                <label for="exampleInputEmail1">Email address</label>
+                <input asp-for="Email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <span class="text-danger" asp-validation-for="Email"></span>
+            </div>
+
+            @*Photo*@
+            <div class="form-group">
+                <div class="custom-file">
+                    <label class="custom-file-label" for="customFile">Choose Photo</label>
+                    <input type="file" class="custom-file-input" id="customFile"
+                           asp-for="Photo">
+                </div>
+                <span asp-validation-for="Photo" class="text-danger"></span>
+            </div>
+
+            @*Password*@
+            <div class="form-group">
+                <img src="~/assets/images/form/password.png" alt="">
+                <label for="exampleInputPassword1">Password</label>
+                <input asp-for="Password" type="password" class="form-control" id="exampleInputPassword1">
+                <span class="text-danger" asp-validation-for="Password"></span>
+            </div>
+
+            @*Confirm Password*@
+            <div class="form-group">
+                <img src="~/assets/images/form/confirm.png" alt="">
+                <label for="exampleInputPassword2">Confirm Password</label>
+                <input asp-for="ConfirmPassword" type="password" class="form-control" id="exampleInputPassword2">
+                <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+            </div>
+
+            <button type="submit" class="btn submit mt-3">Submit</button>
+        
+        </form>
+        
+        <div class="sign-up mt-4 text-center">
+            <a asp-action="LogIn">Sign In <i class="fas fa-long-arrow-alt-right ml-2"></i></a>
+        </div>
+    </div>
+    <!-- End Register -->
+    <!-- ------------------------------------------------------------------------------ -->
+    <!-- --------------------------------------------------------------------------- -->
+    <!-- Vendor Js Files -->
+    <script src="~/assets/js/particles.js"></script>
+    <!-- latest jquery-->
+    <script src="~/assets/js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap js-->
+    <script src="~/assets/js/bootstrap.js"></script>
+    <!-- popper js-->
+    <script src="~/assets/js/popper.min.js"></script>
+
+    <script src="~/assets/js/all.min.js"></script>
+
+    <script>
+
+        particlesJS('particles-js',
+
+            {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#fff"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#fff"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        },
+                        "image": {
+                            "src": "img/github.svg",
+                            "width": 100,
+                            "height": 100
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": false,
+                        "anim": {
+                            "enable": false,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 5,
+                        "random": true,
+                        "anim": {
+                            "enable": false,
+                            "speed": 40,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#fff",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 6,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "repulse"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 400,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 200
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true,
+                "config_demo": {
+                    "hide_card": false,
+                    "background_color": "#b61924",
+                    "background_image": "",
+                    "background_position": "50% 50%",
+                    "background_repeat": "no-repeat",
+                    "background_size": "cover"
+                }
+            }
+
+        );
+
+    </script>
+
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+            await Html.RenderPartialAsync("_Notification");
+        }
+</body>
+</html>

@@ -1,4 +1,5 @@
 ﻿using E_Exam.Core.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,6 +14,7 @@ namespace E_Exam.Core.ViewModels
         [Required(ErrorMessage = "Please Enter your Name")]
         public string FullName { get; set; }
 
+        [EmailAddress(ErrorMessage ="Invalid Email Address")]
         [Required(ErrorMessage = "You Should Type Email Address")]
         public string Email { get; set; }
 
@@ -32,5 +34,24 @@ namespace E_Exam.Core.ViewModels
         // Relations
         public IEnumerable<TbDepartment>? Departments { get; set; } = new List<TbDepartment>();
         public IEnumerable<TbLevel>? Levels { get; set; }
+    }
+
+    public class RegisterDoctorVM
+    {
+        [Required(ErrorMessage = "Please Enter your Name")]
+        public string FullName { get; set; }
+
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        [Required(ErrorMessage = "You Should Type Email Address")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage ="Upload your Photo")]
+        public IFormFile Photo { get; set; }
+
+        [Required(ErrorMessage = "Please Enter your Password")]
+        public string Password { get; set; }
+
+        [Compare("Password", ErrorMessage = "Confirm Password dosent match with Password")]
+        public string ConfirmPassword { get; set; }
     }
 }

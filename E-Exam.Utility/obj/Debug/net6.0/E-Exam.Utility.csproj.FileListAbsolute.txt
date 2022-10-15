@@ -1,0 +1,12 @@
+E:\Asp.net Projects\E-Exam\E-Exam.Utility\bin\Debug\net6.0\E-Exam.Utility.deps.json
+E:\Asp.net Projects\E-Exam\E-Exam.Utility\bin\Debug\net6.0\E-Exam.Utility.dll
+E:\Asp.net Projects\E-Exam\E-Exam.Utility\bin\Debug\net6.0\E-Exam.Utility.pdb
+E:\Asp.net Projects\E-Exam\E-Exam.Utility\obj\Debug\net6.0\E-Exam.Utility.csproj.AssemblyReference.cache
+E:\Asp.net Projects\E-Exam\E-Exam.Utility\obj\Debug\net6.0\E-Exam.Utility.GeneratedMSBuildEditorConfig.editorconfig
+E:\Asp.net Projects\E-Exam\E-Exam.Utility\obj\Debug\net6.0\E-Exam.Utility.AssemblyInfoInputs.cache
+E:\Asp.net Projects\E-Exam\E-Exam.Utility\obj\Debug\net6.0\E-Exam.Utility.AssemblyInfo.cs
+E:\Asp.net Projects\E-Exam\E-Exam.Utility\obj\Debug\net6.0\E-Exam.Utility.csproj.CoreCompileInputs.cache
+E:\Asp.net Projects\E-Exam\E-Exam.Utility\obj\Debug\net6.0\E-Exam.Utility.dll
+E:\Asp.net Projects\E-Exam\E-Exam.Utility\obj\Debug\net6.0\refint\E-Exam.Utility.dll
+E:\Asp.net Projects\E-Exam\E-Exam.Utility\obj\Debug\net6.0\E-Exam.Utility.pdb
+E:\Asp.net Projects\E-Exam\E-Exam.Utility\obj\Debug\net6.0\ref\E-Exam.Utility.dll

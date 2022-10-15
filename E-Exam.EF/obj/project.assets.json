@@ -899,6 +899,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "E-Exam.Utility": "1.0.0",
           "Microsoft.AspNetCore.Http.Features": "5.0.17",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.9"
         },
@@ -907,6 +908,16 @@
         },
         "runtime": {
           "bin/placeholder/E-Exam.Core.dll": {}
+        }
+      },
+      "E-Exam.Utility/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/E-Exam.Utility.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/E-Exam.Utility.dll": {}
         }
       }
     }
@@ -2270,6 +2281,11 @@
       "type": "project",
       "path": "../E-Exam.Core/E-Exam.Core.csproj",
       "msbuildProject": "../E-Exam.Core/E-Exam.Core.csproj"
+    },
+    "E-Exam.Utility/1.0.0": {
+      "type": "project",
+      "path": "../E-Exam.Utility/E-Exam.Utility.csproj",
+      "msbuildProject": "../E-Exam.Utility/E-Exam.Utility.csproj"
     }
   },
   "projectFileDependencyGroups": {

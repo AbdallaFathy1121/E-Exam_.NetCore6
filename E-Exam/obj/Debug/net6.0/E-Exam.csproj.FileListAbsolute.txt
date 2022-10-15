@@ -273,6 +273,5 @@ E:\Asp.net Projects\E-Exam\E-Exam\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptogr
 E:\Asp.net Projects\E-Exam\E-Exam\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 E:\Asp.net Projects\E-Exam\E-Exam\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
 E:\Asp.net Projects\E-Exam\E-Exam\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
-E:\Asp.net Projects\E-Exam\E-Exam\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.UI.dll
-E:\Asp.net Projects\E-Exam\E-Exam\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Embedded.dll
-E:\Asp.net Projects\E-Exam\E-Exam\obj\Debug\net6.0\E-Exam.MvcApplicationPartsAssemblyInfo.cs
+E:\Asp.net Projects\E-Exam\E-Exam\bin\Debug\net6.0\E-Exam.Utility.dll
+E:\Asp.net Projects\E-Exam\E-Exam\bin\Debug\net6.0\E-Exam.Utility.pdb

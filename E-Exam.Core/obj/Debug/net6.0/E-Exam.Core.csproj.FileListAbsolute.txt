@@ -10,3 +10,6 @@ E:\Asp.net Projects\E-Exam\E-Exam.Core\obj\Debug\net6.0\E-Exam.Core.dll
 E:\Asp.net Projects\E-Exam\E-Exam.Core\obj\Debug\net6.0\refint\E-Exam.Core.dll
 E:\Asp.net Projects\E-Exam\E-Exam.Core\obj\Debug\net6.0\E-Exam.Core.pdb
 E:\Asp.net Projects\E-Exam\E-Exam.Core\obj\Debug\net6.0\ref\E-Exam.Core.dll
+E:\Asp.net Projects\E-Exam\E-Exam.Core\bin\Debug\net6.0\E-Exam.Utility.dll
+E:\Asp.net Projects\E-Exam\E-Exam.Core\bin\Debug\net6.0\E-Exam.Utility.pdb
+E:\Asp.net Projects\E-Exam\E-Exam.Core\obj\Debug\net6.0\E-Exam.Core.csproj.CopyComplete

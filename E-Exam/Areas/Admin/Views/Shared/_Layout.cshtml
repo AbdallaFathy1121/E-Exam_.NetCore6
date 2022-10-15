@@ -16,6 +16,11 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <!-- Theme style -->
     <link rel="stylesheet" href="~/Admin/dist/css/adminlte.min.css">
+    <style>
+        td {
+            vertical-align: middle !important;
+        }
+    </style>
     @RenderSection("Styles", required: false);
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -54,7 +59,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
-          <a href="#" class="d-block">User Name</a>
+          <a class="d-block">@User.Identity.Name</a>
         </div>
       </div>
 
@@ -63,15 +68,15 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
             <a asp-controller="Levels" asp-action="Index" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
-              <p>
-                Levels
-              </p>
+                <i class="nav-icon fas fa-school"></i>
+                <p>
+                    Levels
+                </p>
             </a>
           </li>
           <li class="nav-item">
             <a asp-controller="Departments" asp-action="Index" class="nav-link">
-              <i class="nav-icon far fa-image"></i>
+              <i class="nav-icon fas fa-users"></i>
               <p>
                 Departments
               </p>
@@ -102,7 +107,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/kanban.html" class="nav-link">
+              <a asp-controller="Users" asp-action="Index" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 All Users

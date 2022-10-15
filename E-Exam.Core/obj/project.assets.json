@@ -391,6 +391,16 @@
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
         }
+      },
+      "E-Exam.Utility/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/E-Exam.Utility.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/E-Exam.Utility.dll": {}
+        }
       }
     }
   },
@@ -886,10 +896,16 @@
         "system.runtime.compilerservices.unsafe.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "E-Exam.Utility/1.0.0": {
+      "type": "project",
+      "path": "../E-Exam.Utility/E-Exam.Utility.csproj",
+      "msbuildProject": "../E-Exam.Utility/E-Exam.Utility.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "E-Exam.Utility >= 1.0.0",
       "Microsoft.AspNetCore.Http.Features >= 5.0.17",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.9"
     ]
@@ -920,7 +936,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\Asp.net Projects\\E-Exam\\E-Exam.Utility\\E-Exam.Utility.csproj": {
+              "projectPath": "E:\\Asp.net Projects\\E-Exam\\E-Exam.Utility\\E-Exam.Utility.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -564,11 +564,17 @@
       },
       "E-Exam.Core/1.0.0": {
         "dependencies": {
+          "E-Exam.Utility": "1.0.0",
           "Microsoft.AspNetCore.Http.Features": "5.0.17",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.9"
         },
         "runtime": {
           "E-Exam.Core.dll": {}
+        }
+      },
+      "E-Exam.Utility/1.0.0": {
+        "runtime": {
+          "E-Exam.Utility.dll": {}
         }
       }
     }
@@ -930,6 +936,11 @@
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
     },
     "E-Exam.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "E-Exam.Utility/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

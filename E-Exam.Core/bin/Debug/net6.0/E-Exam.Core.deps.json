@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "E-Exam.Core/1.0.0": {
         "dependencies": {
+          "E-Exam.Utility": "1.0.0",
           "Microsoft.AspNetCore.Http.Features": "5.0.17",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.9"
         },
@@ -243,7 +244,12 @@
           }
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/6.0.0": {}
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
+      "E-Exam.Utility/1.0.0": {
+        "runtime": {
+          "E-Exam.Utility.dll": {}
+        }
+      }
     }
   },
   "libraries": {
@@ -412,6 +418,11 @@
       "sha512": "sha512-/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
       "path": "system.runtime.compilerservices.unsafe/6.0.0",
       "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    },
+    "E-Exam.Utility/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

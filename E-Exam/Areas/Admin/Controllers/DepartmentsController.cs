@@ -2,11 +2,14 @@
 using E_Exam.Core;
 using E_Exam.Core.Models;
 using E_Exam.Core.ViewModels;
+using E_Exam.Utility.Consts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_Exam.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = Roles.Admin)]
     public class DepartmentsController : Controller
     {
         private IUnitOfWork _unitOfWork;

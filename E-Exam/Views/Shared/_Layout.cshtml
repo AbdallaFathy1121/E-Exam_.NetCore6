@@ -1,4 +1,6 @@
-﻿@inject SignInManager<ApplicationUser> SignInManager
+﻿@using E_Exam.Utility.Consts
+@inject SignInManager<ApplicationUser> SignInManager
+@inject RoleManager<IdentityRole> RoleManager
 @inject UserManager<ApplicationUser> UserManager
 
 <!DOCTYPE html>
@@ -72,6 +74,12 @@
                                             <li class="nav-item">
                                                 <a class="nav-link" asp-controller="Account" asp-action="Index">My Account</a>
                                             </li>
+                                            @if(User.IsInRole(Roles.Admin))
+                                            {
+                                                <li class="nav-item">
+                                                    <a class="nav-link" asp-area="Admin" asp-controller="Home" asp-action="Index">Dashboard</a>
+                                                </li>
+                                            }
                                         }
                                     </ul>
                                     <div class="dropdown">

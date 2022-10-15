@@ -1,7 +1,8 @@
 ﻿using E_Exam.Core;
-using E_Exam.Core.Consts;
 using E_Exam.Core.Models;
 using E_Exam.Core.ViewModels;
+using E_Exam.Utility.Consts;
+using E_Exam.Utility.EmailSender;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,17 +15,16 @@ namespace E_Exam.Controllers
         private long _maxAllowedPosterSize = 1048576 * 2; // 2MB
 
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IUnitOfWork _unitOfWork;
-        public UsersController(UserManager<ApplicationUser> userManager, 
-            RoleManager<IdentityRole> roleManager, IUnitOfWork unitOfWork, 
-            SignInManager<ApplicationUser> signInManager)
+        private readonly IEmailSender _emailSender;
+        public UsersController(UserManager<ApplicationUser> userManager, IUnitOfWork unitOfWork, 
+            SignInManager<ApplicationUser> signInManager, IEmailSender emailSender)
         {
             _userManager = userManager;
-            _roleManager = roleManager;
             _unitOfWork = unitOfWork;
             _signInManager = signInManager;
+            _emailSender = emailSender;
         }
 
         public async Task<IActionResult> RegisterStudent()
@@ -83,8 +83,15 @@ namespace E_Exam.Controllers
                 var createUser = await _userManager.CreateAsync(user, model.Password);
                 if (createUser.Succeeded)
                 {
-                    TempData["Success"] = "Register Successfully!";
-                    return Redirect("/");
+                    // Create Link
+                    var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var url = Url.Action("ConfirmEmail", "Users", new { token = token, userId = user.Id }, Request.Scheme);
+                    // Send Email
+                    string formatUrl = $"<h3> To confirm email, you should <a href='{url}'> Click here </a> </h3>";
+                    _emailSender.SendEmail(user.Email, "Email Confirmation", formatUrl);
+
+                    TempData["Success"] = "Register Successfully!, Please Confirm your Email";
+                    return RedirectToAction("LogIn");
                 }
                 else
                 {
@@ -97,6 +104,7 @@ namespace E_Exam.Controllers
             catch (Exception ex)
             {
                 TempData["Error"] = ex.Message;
+                model.Levels = await _unitOfWork.TbLevels.GetAllAsync();
                 return View("RegisterStudent", model);
             }
         }
@@ -143,9 +151,17 @@ namespace E_Exam.Controllers
                 var createUser = await _userManager.CreateAsync(user, model.Password);
                 if (createUser.Succeeded)
                 {
+                    // add user to Role Doctor
                     await _userManager.AddToRoleAsync(user, Roles.Doctor);
-                    TempData["Success"] = "Register Successfully!";
-                    return Redirect("/");
+                    // Create Link
+                    var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var url = Url.Action("ConfirmEmail", "Users", new { token = token, userId = user.Id }, Request.Scheme);
+                    // Send Email
+                    string formatUrl = $"<h3> To confirm email, you should <a href='{url}'> Click here </a> </h3>";
+                    _emailSender.SendEmail(user.Email, "Email Confirmation", formatUrl);
+
+                    TempData["Success"] = "Register Successfully!, Please Confirm your Email";
+                    return RedirectToAction("LogIn");
                 }
                 else
                 {
@@ -162,7 +178,75 @@ namespace E_Exam.Controllers
 
         }
 
+        [HttpPost]
+        public async Task<IActionResult> LogIn(LogInVM model, string? returnUrl)
+        {
+            if(!ModelState.IsValid)
+                return View(model);
 
+            var existedUser = await _userManager.FindByEmailAsync(model.Email);
+            if (existedUser == null)
+            {
+                TempData["Error"] = "Invalid Email or Password";
+                return View(model);
+            }
+
+            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, true, true);
+            if (result.Succeeded)
+            {
+                if (!string.IsNullOrEmpty(returnUrl))
+                    return LocalRedirect(returnUrl);
+                else
+                    return Redirect("/");
+            }
+            else if (result.IsNotAllowed)
+            {
+                TempData["Error"] = "You must Confirm the email, To be able to login";
+            }
+
+            return View(model);
+        }
+
+        public async Task<IActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
+
+            return Redirect("/");
+        }
+
+        public async Task<IActionResult> ConfirmEmail(ConfirmEmailVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByIdAsync(model.UserId);
+                if (user is not null)
+                {
+                    if (!user.EmailConfirmed)
+                    {
+                        var result = await _userManager.ConfirmEmailAsync(user, model.Token);
+                        if (result.Succeeded)
+                        {
+                            TempData["Success"] = "Your Email confirmed Successfully!";
+                        }
+                        else
+                        {
+                            var errors = result.Errors.ToArray();
+                            TempData["Error"] = errors;
+                        }
+                    }
+                    else
+                    {
+                        TempData["Warning"] = "Your Email already confirmed";
+                    }
+                }
+                else
+                {
+                    TempData["Error"] = $"Notfound User With ID: {model.UserId}";
+                }
+            }
+
+            return RedirectToAction("LogIn");
+        }
 
     }
 }

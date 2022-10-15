@@ -15,3 +15,5 @@ E:\Asp.net Projects\E-Exam\E-Exam.EF\obj\Debug\net6.0\refint\E-Exam.EF.dll
 E:\Asp.net Projects\E-Exam\E-Exam.EF\obj\Debug\net6.0\E-Exam.EF.pdb
 E:\Asp.net Projects\E-Exam\E-Exam.EF\obj\Debug\net6.0\E-Exam.EF.genruntimeconfig.cache
 E:\Asp.net Projects\E-Exam\E-Exam.EF\obj\Debug\net6.0\ref\E-Exam.EF.dll
+E:\Asp.net Projects\E-Exam\E-Exam.EF\bin\Debug\net6.0\E-Exam.Utility.dll
+E:\Asp.net Projects\E-Exam\E-Exam.EF\bin\Debug\net6.0\E-Exam.Utility.pdb

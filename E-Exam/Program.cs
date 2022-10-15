@@ -1,26 +1,28 @@
 using E_Exam.Core;
 using E_Exam.Core.Models;
+using E_Exam.Core.Services;
 using E_Exam.EF;
+using E_Exam.Utility.EmailSender;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllersWithViews();
-builder.Services.AddDistributedMemoryCache();
-builder.Services.AddRazorPages();
 
 // Connection With Database
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString,
         b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)
-)
+    )
 );
-
 
 // Add Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => {
@@ -28,33 +30,49 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => {
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireUppercase = true;
     options.User.RequireUniqueEmail = true;
+    options.SignIn.RequireConfirmedEmail = true;
 }).AddEntityFrameworkStores<ApplicationDbContext>()  
-.AddDefaultUI()
 .AddDefaultTokenProviders();
 
+// Configure TokenLifespan
+builder.Services.Configure<DataProtectionTokenProviderOptions>(options =>
+{
+    options.TokenLifespan = TimeSpan.FromHours(6);
+});
+
+// Configure Cookie
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.AccessDeniedPath = "/Account/AccessDenied";
+    options.AccessDeniedPath = "/";
     options.Cookie.Name = "Cookie";
     options.Cookie.HttpOnly = true;
     options.ExpireTimeSpan = TimeSpan.FromHours(24);
-    options.LoginPath = "/Users/Login";
+    options.LoginPath = "/Users/LogIn";
     options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
     options.SlidingExpiration = true;
 });
 
-
-// Add UnitOfWork using Dependence Injection
+// Add Dependence Injection
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IEmailSender, EmailSender>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 // Use AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
 
-
-
 var app = builder.Build();
+
+// Run Code Once at Application
+using (var scope = app.Services.CreateScope())
+{
+    var provider = scope.ServiceProvider;
+
+    var userService = provider.GetRequiredService<IUserService>();
+    await userService.Initialize();
+}
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -67,7 +85,6 @@ app.UseRouting();
 app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
-app.MapRazorPages();
 
 
 app.UseEndpoints(endpoints =>
@@ -81,6 +98,5 @@ app.UseEndpoints(endpoints =>
         pattern: "{controller=Home}/{action=Index}/{id?}");
 
 });
-
 
 app.Run();

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Exam.Core.Consts
+namespace E_Exam.Utility.Consts
 {
     public class Roles
     {

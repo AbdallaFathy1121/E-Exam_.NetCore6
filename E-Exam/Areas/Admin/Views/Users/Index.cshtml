@@ -1,4 +1,4 @@
-﻿@model IEnumerable<UserVM>
+﻿@model List<UserVM>
 
 @{
     ViewData["Title"] = "Users";
@@ -95,7 +95,14 @@
                                         }
 
                                         <td>
-                                            <a class="btn btn-secondary" asp-action="Block" asp-route-id="@user.Email">Block</a>
+                                            @if(user.LockoutEnabled == true) 
+                                            {
+                                                <a class="btn btn-secondary" onClick=Block("/Admin/Users/ToggleBlockUser/@user.Email")>Block</a>
+                                            }
+                                            else
+                                            {
+                                                <a class="btn btn-success" onClick=UnBlock("/Admin/Users/ToggleBlockUser/@user.Email")>UnBlock</a>
+                                            }
                                             <a class="btn btn-danger" onClick=Delete("/Admin/Users/Delete/@user.Email") >Delete</a>
                                         </td>
                                     </tr>

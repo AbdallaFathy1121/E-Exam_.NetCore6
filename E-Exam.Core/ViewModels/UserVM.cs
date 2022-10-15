@@ -15,5 +15,6 @@ namespace E_Exam.Core.ViewModels
         public bool EmailConfirmed { get; set; } = false;
         public string? Level { get; set; }
         public string? Department { get; set; }
+        public bool LockoutEnabled { get; set; }
     }
 }

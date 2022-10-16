@@ -16,12 +16,18 @@ namespace E_Exam.EF
         public ILevelRepository TbLevels { get; private set; }
         public IDepartmentRepository TbDepartments { get; private set; }
         public IDepartmentLevelRepository TbDepartmentLevels { get; private set; }
+        public ISubjectRepository TbSubjects { get; private set; }
+        public ISubjectDepartmentRepository TbSubjectDepartments { get; private set; }
+
+
         public UnitOfWork(ApplicationDbContext context)
         {
             this.context = context;
             TbLevels = new LevelRepository(context);
             TbDepartments = new DepartmentRepository(context);
             TbDepartmentLevels = new DepartmentLevelRepository(context);
+            TbSubjects = new SubjectRepository(context);
+            TbSubjectDepartments = new SubjectDepartmentRepository(context);
         }
 
         public int Complete()

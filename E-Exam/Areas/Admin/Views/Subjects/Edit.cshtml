@@ -1,0 +1,107 @@
+﻿@model SubjectVM
+
+@{
+    ViewData["Title"] = "Subjects";
+}
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                @if(Model is null)
+                {
+                    <h1 class="m-0">Add</h1>
+                }
+                else
+                {
+                    <h1 class="m-0">Edit</h1>
+                }
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Admin">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/Admin/Subjects">@ViewData["Title"]</a></li>
+                    @if (Model is null)
+                    {
+                        <li class="breadcrumb-item active">Add</li>
+                    }
+                    else
+                    {
+                        <li class="breadcrumb-item active">Edit</li>
+                    }
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<section class="content">
+    <div class="container-fluid">
+        <!-- SELECT2 EXAMPLE -->
+        <div class="card card-default">
+            <div class="card-header bg-success">
+                <h3 class="card-title">Add & Edit</h3>
+            </div>
+            <!-- /.card-header -->
+            <form role="form" method="post" asp-action="Save">
+
+                @if (Model == null) {
+                    <input type="hidden" asp-for="Id" value="0">
+                }
+                else
+                {
+                    <input type="hidden" asp-for="Id">
+                }
+
+               <div class="card-body">
+
+                   @*Subject Name*@
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Subject Name</label>
+                        <input asp-for="Name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Subject">
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+
+                    <div class="row">
+                        @*Select Level*@
+                        <div class="col-lg-6">
+                            <div class="form-group form-select">
+                                <label asp-for="LevelId">Level</label>
+                                <select class="form-control" asp-for="LevelId" asp-items="@(new SelectList(ViewBag.Levels, "Id","Name"))">
+                                </select>
+                                <span class="text-danger" asp-validation-for="LevelId"></span>
+                            </div>
+                        </div>
+                        @*Select Doctor*@
+                        <div class="col-lg-6">
+                            <div class="form-group form-select">
+                                <label asp-for="UserId">Doctor</label>
+                                <select class="form-control" asp-for="UserId" asp-items="@(new SelectList(ViewBag.Users, "Id","FullName"))">
+                                </select>
+                                <span class="text-danger" asp-validation-for="UserId"></span>
+                            </div>
+                        </div>
+                    </div>
+
+               </div>
+
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </form>
+
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        await Html.RenderPartialAsync("_Notification");
+    }
+}

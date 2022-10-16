@@ -10,6 +10,7 @@ namespace E_Exam.Core.Interfaces
     public interface IDepartmentRepository : IBaseRepository<TbDepartment>
     {
         Task<IEnumerable<TbDepartment>> GetDepartmentsThatNotInDepartmentLevel(int levelId);
+        Task<IEnumerable<TbDepartment>> GetDepartmentsThatNotInDepartmentSubject(int subjectId, int levelId);
         Task<IEnumerable<TbDepartment>> GetDepartmentsWithByLevelId(int levelId);
     }
 }

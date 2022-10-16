@@ -13,6 +13,8 @@ namespace E_Exam.Core
         ILevelRepository TbLevels { get; }
         IDepartmentRepository TbDepartments { get; }
         IDepartmentLevelRepository TbDepartmentLevels { get; }
+        ISubjectRepository TbSubjects { get; }
+        ISubjectDepartmentRepository TbSubjectDepartments { get; }
 
 
         int Complete();

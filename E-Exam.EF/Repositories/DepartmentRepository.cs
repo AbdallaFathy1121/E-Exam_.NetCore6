@@ -38,6 +38,18 @@ namespace E_Exam.EF.Repositories
 
             return result;
         }
-      
+
+        public async Task<IEnumerable<TbDepartment>> GetDepartmentsThatNotInDepartmentSubject(int subjectId, int levelId)
+        {
+            var LevelIdParam = new SqlParameter("@LevelId", levelId);
+            var SubjectIdParam = new SqlParameter("@SubjectId", subjectId);
+
+            var result = await _context.TbDepartments
+                .FromSqlRaw($"SP_GetDepartmentsThatNotInSubjectDepartments @SubjectId, @LevelId", SubjectIdParam, LevelIdParam).ToListAsync();
+
+            return result;
+        }
+
+
     }
 }

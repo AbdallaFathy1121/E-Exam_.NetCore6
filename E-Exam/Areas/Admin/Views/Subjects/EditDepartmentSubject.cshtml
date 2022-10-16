@@ -1,0 +1,91 @@
+﻿@model EditDepartmentSubjectVM
+@{
+    ViewData["Title"] = "Manage Departments";
+}
+
+@section Styles {
+    <style>
+        form {
+            display: inline-block !important;
+            margin-right: 5px;
+        }
+    </style>
+}
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">@ViewData["Title"]</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Admin">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/Admin/Subjects">Subjects</a></li>
+                    <li class="breadcrumb-item active">@ViewData["Title"]</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<section class="content">
+    <div class="container-fluid">
+        <!-- SELECT2 EXAMPLE -->
+        <div class="card card-default">
+            <div class="card-header bg-success">
+                <h3 class="card-title">Add & Edit</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div class="row">
+
+                    <div class="col-md-6">
+                            <h4>Add Departments</h4>
+                        @if (Model?.LstDepartments is not null)
+                        {
+                            @foreach (var dept in Model.LstDepartments)
+                            {
+                                <form role="form" method="post" asp-action="AddDepartment">
+                                    <input type="hidden" name="departmentId" value="@dept.Id">
+                                    <input type="hidden" name="subjectId" value="@ViewBag.SubjectId">
+                                    <input type="hidden" name="levelId" value="@ViewBag.LevelId">
+                                    <button type="submit" class="btn btn-success">
+                                        + @dept.Name
+                                    </button>
+                                </form>
+                            }
+                        }
+                    </div>
+
+                    <div class="col-md-6">
+                        <h4>Delete Departments</h4>
+                        @if (Model?.LstSubjectDepartments is not null)
+                        {
+                            @foreach (var dept in Model.LstSubjectDepartments)
+                            {
+                                <form role="form" method="post" asp-action="DeleteDepartment">
+                                    <input type="hidden" name="Id" value="@dept.Id">
+                                    <button type="submit" class="btn btn-danger">
+                                        - @dept.Department?.Name
+                                    </button>
+                                </form>
+                            }
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-ajax-unobtrusive@3.2.6/dist/jquery.unobtrusive-ajax.min.js"></script>
+    @{
+        await Html.RenderPartialAsync("_Notification");
+    }
+}

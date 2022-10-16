@@ -33,4 +33,16 @@ namespace File_Sharing
         }
     }
 
+    public class SubjectProfile : Profile
+    {
+        public SubjectProfile()
+        {
+            CreateMap<SubjectVM, TbSubject>();
+            //.ForMember(x => x.CreationDate, op => op.Ignore())
+            //.ForMember(x => x.UploadId, op => op.Ignore());
+
+            CreateMap<TbSubject, SubjectVM>();
+        }
+    }
+
 }

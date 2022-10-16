@@ -161,6 +161,57 @@ namespace E_Exam.EF.Migrations
                     b.ToTable("TbLevels");
                 });
 
+            modelBuilder.Entity("E_Exam.Core.Models.TbSubject", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("LevelId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LevelId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("TbSubjects");
+                });
+
+            modelBuilder.Entity("E_Exam.Core.Models.TbSubjectDepartment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.HasIndex("SubjectId");
+
+                    b.ToTable("TbSubjectDepartments");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -328,6 +379,44 @@ namespace E_Exam.EF.Migrations
                     b.Navigation("Level");
                 });
 
+            modelBuilder.Entity("E_Exam.Core.Models.TbSubject", b =>
+                {
+                    b.HasOne("E_Exam.Core.Models.TbLevel", "Level")
+                        .WithMany()
+                        .HasForeignKey("LevelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("E_Exam.Core.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Level");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("E_Exam.Core.Models.TbSubjectDepartment", b =>
+                {
+                    b.HasOne("E_Exam.Core.Models.TbDepartment", "Department")
+                        .WithMany()
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("E_Exam.Core.Models.TbSubject", "Subject")
+                        .WithMany("SubjectDepartments")
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Department");
+
+                    b.Navigation("Subject");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -387,6 +476,11 @@ namespace E_Exam.EF.Migrations
             modelBuilder.Entity("E_Exam.Core.Models.TbLevel", b =>
                 {
                     b.Navigation("DepartmentLevels");
+                });
+
+            modelBuilder.Entity("E_Exam.Core.Models.TbSubject", b =>
+                {
+                    b.Navigation("SubjectDepartments");
                 });
 #pragma warning restore 612, 618
         }

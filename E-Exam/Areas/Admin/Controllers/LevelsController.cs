@@ -113,22 +113,12 @@ namespace E_Exam.Areas.Admin.Controllers
             
             var departmentLevel = await _unitOfWork.TbDepartmentLevels.GetWhereAsync(x => x.LevelId == id, new[] { "Department" });
         
-            if(departmentLevel.Count() == 0)
-            {
-                var department = await _unitOfWork.TbDepartments.GetAllAsync();
-                model.LstDepartmentVM = _mapper.Map<IEnumerable<DepartmentVM>>(department);
+            var department = await _unitOfWork.TbDepartments.GetDepartmentsThatNotInDepartmentLevel(id);
 
-                return View(model);
-            }
-            else
-            {
-                var department = await _unitOfWork.TbDepartments.GetDepartmentsThatNotInDepartmentLevel(id);
+            model.LstDepartmentVM = _mapper.Map<IEnumerable<DepartmentVM>>(department);
+            model.LstDepartmentLevel = departmentLevel;
 
-                model.LstDepartmentVM = _mapper.Map<IEnumerable<DepartmentVM>>(department);
-                model.LstDepartmentLevel = departmentLevel;
-
-                return View(model);
-            }
+            return View(model);
         }
 
         [HttpPost]

@@ -18,6 +18,7 @@ namespace E_Exam.EF
         public IDepartmentLevelRepository TbDepartmentLevels { get; private set; }
         public ISubjectRepository TbSubjects { get; private set; }
         public ISubjectDepartmentRepository TbSubjectDepartments { get; private set; }
+        public IChapterRepository TbChapters { get; private set; }
 
 
         public UnitOfWork(ApplicationDbContext context)
@@ -28,6 +29,7 @@ namespace E_Exam.EF
             TbDepartmentLevels = new DepartmentLevelRepository(context);
             TbSubjects = new SubjectRepository(context);
             TbSubjectDepartments = new SubjectDepartmentRepository(context);
+            TbChapters = new ChapterRepository(context);
         }
 
         public int Complete()

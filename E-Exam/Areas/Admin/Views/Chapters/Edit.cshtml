@@ -1,0 +1,90 @@
+﻿@model ChapterVM
+
+@{
+    ViewData["Title"] = "Chapter";
+}
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                @if (Model == null)
+                {
+                    <h1 class="m-0">Add</h1>
+                }
+                else
+                {
+                    <h1 class="m-0">Edit</h1>
+                }
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Admin">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/Admin/Chapters">@ViewData["Title"]</a></li>
+                    @if (Model == null)
+                    {
+                        <li class="breadcrumb-item active">Add</li>
+                    }
+                    else
+                    {
+                        <li class="breadcrumb-item active">Edit</li>
+                    }
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<section class="content">
+    <div class="container-fluid">
+        <!-- SELECT2 EXAMPLE -->
+        <div class="card card-default">
+            <div class="card-header bg-success">
+                <h3 class="card-title">Add & Edit</h3>
+            </div>
+            <!-- /.card-header -->
+            <form role="form" method="post" asp-action="Save">
+
+                @if (Model == null)
+                {
+                    <input type="hidden" asp-for="Id" value="0">
+                }
+                else
+                {
+                    <input type="hidden" asp-for="Id">
+                }
+                
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Chapter Name</label>
+                                <input asp-for="Name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Chapter">
+                                <span class="text-danger" asp-validation-for="Name"></span>
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+             
+                    </div>
+                </div>
+
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </form>
+
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        await Html.RenderPartialAsync("_Notification");
+    }
+}

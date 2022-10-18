@@ -45,4 +45,15 @@ namespace File_Sharing
         }
     }
 
+    public class ChapterProfile : Profile
+    {
+        public ChapterProfile()
+        {
+            CreateMap<ChapterVM, TbChapter>();
+            //.ForMember(x => x.CreationDate, op => op.Ignore())
+            //.ForMember(x => x.UploadId, op => op.Ignore());
+
+            CreateMap<TbChapter, ChapterVM>();
+        }
+    }
 }

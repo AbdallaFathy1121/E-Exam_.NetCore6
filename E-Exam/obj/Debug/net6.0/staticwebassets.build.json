@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WWDkwu1x/DYB61K594VI2YLWeHzetkKlaOZZD+032nQ=",
+  "Hash": "0oXmUJKhmF4mC803UuZ3Ve+/KElqM3N9aM+fHOxyAAo=",
   "Source": "E-Exam",
   "BasePath": "_content/E-Exam",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Admin\\.babelrc.js"
+    },
+    {
+      "Identity": "E:\\Asp.net Projects\\E-Exam\\E-Exam\\wwwroot\\Admin\\ajax\\chapter.js",
+      "SourceId": "E-Exam",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Asp.net Projects\\E-Exam\\E-Exam\\wwwroot\\",
+      "BasePath": "_content/E-Exam",
+      "RelativePath": "Admin/ajax/chapter.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Admin\\ajax\\chapter.js"
     },
     {
       "Identity": "E:\\Asp.net Projects\\E-Exam\\E-Exam\\wwwroot\\Admin\\ajax\\department.js",

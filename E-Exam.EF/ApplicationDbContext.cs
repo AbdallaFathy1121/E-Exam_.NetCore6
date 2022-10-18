@@ -20,6 +20,7 @@ namespace E_Exam.EF
         public DbSet<TbDepartmentLevel> TbDepartmentLevels { get; set; }
         public DbSet<TbSubject> TbSubjects { get; set; }
         public DbSet<TbSubjectDepartment> TbSubjectDepartments { get; set; }
+        public DbSet<TbChapter> TbChapters { get; set; }
 
     }
 }

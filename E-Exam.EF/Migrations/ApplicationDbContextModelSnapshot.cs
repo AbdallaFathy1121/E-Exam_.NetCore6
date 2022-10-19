@@ -178,6 +178,23 @@ namespace E_Exam.EF.Migrations
                     b.ToTable("TbLevels");
                 });
 
+            modelBuilder.Entity("E_Exam.Core.Models.TbModelType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TbModelTypes");
+                });
+
             modelBuilder.Entity("E_Exam.Core.Models.TbSubject", b =>
                 {
                     b.Property<int>("Id")

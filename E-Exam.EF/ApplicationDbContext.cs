@@ -21,6 +21,8 @@ namespace E_Exam.EF
         public DbSet<TbSubject> TbSubjects { get; set; }
         public DbSet<TbSubjectDepartment> TbSubjectDepartments { get; set; }
         public DbSet<TbChapter> TbChapters { get; set; }
+        public DbSet<TbModelType> TbModelTypes { get; set; }
+        public DbSet<TbModel> TbModels { get; set; }
 
     }
 }

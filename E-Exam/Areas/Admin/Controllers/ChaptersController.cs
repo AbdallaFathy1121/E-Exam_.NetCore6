@@ -63,6 +63,7 @@ namespace E_Exam.Areas.Admin.Controllers
                 else
                 {
                     var item = await _unitOfWork.TbChapters.GetFirstOrDefaultAsync(x => x.Id == model.Id);
+                    item.Name = model.Name;
                     _unitOfWork.TbChapters.Update(item);
                     TempData["Success"] = "Update Chapter Successfully!";
                 }

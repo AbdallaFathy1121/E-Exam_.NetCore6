@@ -66,74 +66,99 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-users"></i>
-                    <p>
-                        Users
-                        <i class="fas fa-angle-left right"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a asp-controller="Users" asp-action="Index" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>All Users</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="Users" asp-action="BlockedUsers" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Blocked Users</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="Users" asp-action="Doctors" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Doctors</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="Users" asp-action="Students" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Students</p>
-                        </a>
-                    </li>
-                </ul>
-            </li>
             
-            <li class="nav-item">
-            <a asp-controller="Levels" asp-action="Index" class="nav-link">
-                <i class="nav-icon fas fa-school"></i>
-                <p>
-                    Levels
-                </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a asp-controller="Departments" asp-action="Index" class="nav-link">
-              <i class="nav-icon fas fa-chalkboard-teacher"></i>
-              <p>
-                Departments
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a asp-controller="Subjects" asp-action="Index" class="nav-link">
-                <i class="nav-icon fas fa-book"></i>
-                <p>
-                    Subjects
-                </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a asp-controller="Chapters" asp-action="Index" class="nav-link">
-              <i class="nav-icon fas fa-scroll"></i>
-              <p>
-                Chapters
-              </p>
-            </a>
-          </li>
+            @if(User.IsInRole(Roles.Admin))
+            {
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Users
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a asp-controller="Users" asp-action="Index" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All Users</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="Users" asp-action="BlockedUsers" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Blocked Users</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="Users" asp-action="Doctors" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Doctors</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="Users" asp-action="Students" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Students</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a asp-controller="Levels" asp-action="Index" class="nav-link">
+                        <i class="nav-icon fas fa-school"></i>
+                        <p>
+                            Levels
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Departments" asp-action="Index" class="nav-link">
+                        <i class="nav-icon fas fa-chalkboard-teacher"></i>
+                        <p>
+                            Departments
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Subjects" asp-action="Index" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Subjects
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Chapters" asp-action="Index" class="nav-link">
+                        <i class="nav-icon fas fa-scroll"></i>
+                        <p>
+                            Chapters
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="ModelTypes" asp-action="Index" class="nav-link">
+                        <i class="nav-icon fas fa-sticky-note"></i>
+                        <p>
+                            Model Type
+                        </p>
+                    </a>
+                </li>
+
+            }
+            @if(User.IsInRole(Roles.Doctor))
+            {
+                <li class="nav-item">
+                        <a asp-controller="Subjects" asp-action="List" asp-route-id="@User.Identity.Name" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Subjects
+                        </p>
+                    </a>
+                </li>
+            }
+    
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -11,7 +11,6 @@ using Microsoft.EntityFrameworkCore;
 namespace E_Exam.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = Roles.Admin)]
     public class SubjectsController : Controller
     {
         private IUnitOfWork _unitOfWork;
@@ -25,7 +24,7 @@ namespace E_Exam.Areas.Admin.Controllers
             _userManager = userManager;
         }
 
-
+        [Authorize(Roles = Roles.Admin)]
         public async Task<IActionResult> Index()
         {
             SubjectPageVM model = new();
@@ -39,6 +38,7 @@ namespace E_Exam.Areas.Admin.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = Roles.Admin)]
         public async Task<IActionResult> Edit(int? id)
         {
             var result = await _unitOfWork.TbSubjects.GetFirstOrDefaultAsync(x => x.Id == id);
@@ -63,6 +63,7 @@ namespace E_Exam.Areas.Admin.Controllers
             }
         }
 
+        [Authorize(Roles = Roles.Admin)]
         [HttpPost]
         public async Task<IActionResult> Save(SubjectVM model)
         {
@@ -118,6 +119,7 @@ namespace E_Exam.Areas.Admin.Controllers
             return View("Edit", model);
         }
 
+        [Authorize(Roles = Roles.Admin)]
         public async Task<IActionResult> Delete(int id)
         {
             var item = await _unitOfWork.TbSubjects.GetFirstOrDefaultAsync(a => a.Id == id);
@@ -133,6 +135,7 @@ namespace E_Exam.Areas.Admin.Controllers
             return Json(new { success = false, message = $"Not Found Subject With ID: {id}" });
         }
 
+        [Authorize(Roles = Roles.Admin)]
         public async Task<IActionResult> EditDepartmentSubject(string id)
         {
             var arr = id.Split("--");
@@ -152,6 +155,7 @@ namespace E_Exam.Areas.Admin.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = Roles.Admin)]
         [HttpPost]
         public async Task<IActionResult> AddDepartment(int departmentId, int subjectId, int levelId)
         {
@@ -170,6 +174,22 @@ namespace E_Exam.Areas.Admin.Controllers
 
             return Redirect("/Admin/Subjects/EditDepartmentSubject/" + id);
         }
+
+        [Authorize(Roles = Roles.Doctor)]
+        // Get Subjects For Doctor By Email
+        public async Task<IActionResult> List(string id)
+        {
+            SubjectPageVM model = new();
+
+            model.LstSubjectDepartments = await _unitOfWork.TbSubjectDepartments.GetAllAsync(new[] { "Department" });
+            var subjects = await _unitOfWork.TbSubjects.GetWhereAsync(a => a.User.Email == id, new[] { "Level" });
+            
+            // Using AutoMapper
+            model.LstSubjects = _mapper.Map<IEnumerable<SubjectVM>>(subjects);
+
+            return View(model);
+        }
+
 
 
     }

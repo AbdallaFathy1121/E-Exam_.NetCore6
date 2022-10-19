@@ -19,6 +19,8 @@ namespace E_Exam.EF
         public ISubjectRepository TbSubjects { get; private set; }
         public ISubjectDepartmentRepository TbSubjectDepartments { get; private set; }
         public IChapterRepository TbChapters { get; private set; }
+        public IModelTypeRepository TbModelTypes { get; private set; }
+        public IModelRepository TbModels { get; private set; }
 
 
         public UnitOfWork(ApplicationDbContext context)
@@ -30,6 +32,8 @@ namespace E_Exam.EF
             TbSubjects = new SubjectRepository(context);
             TbSubjectDepartments = new SubjectDepartmentRepository(context);
             TbChapters = new ChapterRepository(context);
+            TbModelTypes = new ModelTypeRepository(context);
+            TbModels = new ModelRepository(context);
         }
 
         public int Complete()

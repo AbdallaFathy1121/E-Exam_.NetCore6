@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace E_Exam.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles =Roles.Admin)]
+    [Authorize(Roles = $"{Roles.Admin}, {Roles.Doctor}")]
     public class HomeController : Controller
     {
         private IUnitOfWork _unitOfWork;

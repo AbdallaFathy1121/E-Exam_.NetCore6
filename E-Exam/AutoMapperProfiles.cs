@@ -56,4 +56,16 @@ namespace File_Sharing
             CreateMap<TbChapter, ChapterVM>();
         }
     }
+
+    public class ModelTypeProfile : Profile
+    {
+        public ModelTypeProfile()
+        {
+            CreateMap<ModelTypeVM, TbModelType>();
+            //.ForMember(x => x.CreationDate, op => op.Ignore())
+            //.ForMember(x => x.UploadId, op => op.Ignore());
+
+            CreateMap<TbModelType, ModelTypeVM>();
+        }
+    }
 }

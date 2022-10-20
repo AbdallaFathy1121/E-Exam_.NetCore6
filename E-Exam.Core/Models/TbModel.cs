@@ -12,7 +12,7 @@ namespace E_Exam.Core.Models
         public int SubjectId { get; set; }
         public int ModelTypeId { get; set; }
         public int ChapterId { get; set; }
-        public DateTime CreationDate { get; set; } = DateTime.UtcNow;
+        public DateTime? CreationDate { get; set; } = DateTime.UtcNow;
 
         // Relations
         public TbSubject? Subject { get; set; }

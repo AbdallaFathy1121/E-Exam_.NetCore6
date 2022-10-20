@@ -178,6 +178,37 @@ namespace E_Exam.EF.Migrations
                     b.ToTable("TbLevels");
                 });
 
+            modelBuilder.Entity("E_Exam.Core.Models.TbModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("ChapterId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ModelTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChapterId");
+
+                    b.HasIndex("ModelTypeId");
+
+                    b.HasIndex("SubjectId");
+
+                    b.ToTable("TbModels");
+                });
+
             modelBuilder.Entity("E_Exam.Core.Models.TbModelType", b =>
                 {
                     b.Property<int>("Id")
@@ -411,6 +442,33 @@ namespace E_Exam.EF.Migrations
                     b.Navigation("Department");
 
                     b.Navigation("Level");
+                });
+
+            modelBuilder.Entity("E_Exam.Core.Models.TbModel", b =>
+                {
+                    b.HasOne("E_Exam.Core.Models.TbChapter", "Chapter")
+                        .WithMany()
+                        .HasForeignKey("ChapterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("E_Exam.Core.Models.TbModelType", "ModelType")
+                        .WithMany()
+                        .HasForeignKey("ModelTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("E_Exam.Core.Models.TbSubject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Chapter");
+
+                    b.Navigation("ModelType");
+
+                    b.Navigation("Subject");
                 });
 
             modelBuilder.Entity("E_Exam.Core.Models.TbSubject", b =>

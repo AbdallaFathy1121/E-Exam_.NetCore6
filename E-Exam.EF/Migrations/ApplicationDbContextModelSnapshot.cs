@@ -189,7 +189,7 @@ namespace E_Exam.EF.Migrations
                     b.Property<int>("ChapterId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreationDate")
+                    b.Property<DateTime?>("CreationDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("ModelTypeId")
@@ -224,6 +224,44 @@ namespace E_Exam.EF.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TbModelTypes");
+                });
+
+            modelBuilder.Entity("E_Exam.Core.Models.TbQuestion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CorrectAnswer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ModelId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Q1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Q2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Q3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Q4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("QuestionName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TbQuestions");
                 });
 
             modelBuilder.Entity("E_Exam.Core.Models.TbSubject", b =>
@@ -410,6 +448,21 @@ namespace E_Exam.EF.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("TbModelTbQuestion", b =>
+                {
+                    b.Property<int>("ModelId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuestionsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ModelId", "QuestionsId");
+
+                    b.HasIndex("QuestionsId");
+
+                    b.ToTable("TbModelTbQuestion");
+                });
+
             modelBuilder.Entity("E_Exam.Core.Models.ApplicationUser", b =>
                 {
                     b.HasOne("E_Exam.Core.Models.TbDepartment", "Department")
@@ -556,6 +609,21 @@ namespace E_Exam.EF.Migrations
                     b.HasOne("E_Exam.Core.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("TbModelTbQuestion", b =>
+                {
+                    b.HasOne("E_Exam.Core.Models.TbModel", null)
+                        .WithMany()
+                        .HasForeignKey("ModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("E_Exam.Core.Models.TbQuestion", null)
+                        .WithMany()
+                        .HasForeignKey("QuestionsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

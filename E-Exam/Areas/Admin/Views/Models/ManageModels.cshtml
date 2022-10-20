@@ -36,7 +36,6 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
                                     <th>Subject</th>
                                     <th>Model Type</th>
                                     <th>Chapter</th>
@@ -48,13 +47,13 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-                                        <td>@item.Id</td>
                                         <td>@item.SubjectName</td>
                                         <td>@item.ModelType</td>
                                         <td>@item.ChapterName</td>
                                         <td></td>
                                         <td>
                                             <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                            <a class="btn btn-primary" asp-controller="Questions" asp-action="Index" asp-route-id="@item.Id">Questions</a>
                                             <a class="btn btn-danger" onClick=Delete("/Admin/Models/Delete/@item.Id")>Delete</a>
                                         </td>
                                     </tr>

@@ -8,6 +8,11 @@ namespace E_Exam.Core.Models
 {
     public class TbModel
     {
+        public TbModel()
+        {
+            Questions = new HashSet<TbQuestion>();
+        }
+
         public int Id { get; set; }
         public int SubjectId { get; set; }
         public int ModelTypeId { get; set; }
@@ -18,6 +23,7 @@ namespace E_Exam.Core.Models
         public TbSubject? Subject { get; set; }
         public TbModelType? ModelType { get; set; }
         public TbChapter? Chapter { get; set; }
+        public ICollection<TbQuestion>? Questions { get; set; }
 
     }
 }

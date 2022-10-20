@@ -23,6 +23,7 @@ namespace E_Exam.EF
         public DbSet<TbChapter> TbChapters { get; set; }
         public DbSet<TbModelType> TbModelTypes { get; set; }
         public DbSet<TbModel> TbModels { get; set; }
+        public DbSet<TbQuestion> TbQuestions { get; set; }
 
     }
 }

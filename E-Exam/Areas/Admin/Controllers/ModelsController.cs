@@ -72,6 +72,7 @@ namespace E_Exam.Areas.Admin.Controllers
         }
 
         [Authorize(Roles = Roles.Doctor)]
+        [HttpPost]
         public async Task<IActionResult> Save(ManageModelsPageVM model)
         {
             if (ModelState.IsValid)

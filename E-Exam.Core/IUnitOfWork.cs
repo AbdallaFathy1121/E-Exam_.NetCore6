@@ -18,6 +18,7 @@ namespace E_Exam.Core
         IChapterRepository TbChapters { get; }
         IModelTypeRepository TbModelTypes { get; }
         IModelRepository TbModels { get; }
+        IQuestionRepository TbQuestions { get; }
 
 
         int Complete();

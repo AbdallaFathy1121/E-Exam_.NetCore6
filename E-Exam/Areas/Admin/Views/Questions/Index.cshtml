@@ -1,0 +1,80 @@
+﻿@model IEnumerable<QuestionVM>
+
+@{
+    ViewData["Title"] = "Questions";
+}
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">@ViewData["Title"]</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Admin">Dashboard</a></li>
+                    <li class="breadcrumb-item active">@ViewData["Title"]</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+
+<section class="content">
+    <a class="btn btn-success mb-4 text-bold" asp-action="Add" asp-route-modelId="@ViewBag.ModelId">Add New Question + </a>
+    <div class="container-fluid">
+        <!-- Row1 -->
+        @foreach (var item in Model)
+        {
+            <div class="card card-default">
+                <div class="card-header">
+                    <h3 class="card-title d-flex">
+                        <div class="mr-3">
+                            <strong class="">Q: </strong>
+                        </div>
+                        <div>
+                            @item.QuestionName
+                        </div>
+                    </h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <ul class="answers mb-4">
+                        <h4>Answers:</h4>
+                        <li>@item.Q1</li>
+                        <li>@item.Q2</li>
+                        @if(item.Q3 is not null) 
+                        {
+                            <li>@item.Q3</li>
+                        }
+                        @if (item.Q4 is not null)
+                        {
+                            <li>@item.Q4</li>
+                        }
+                    </ul>
+                    <div class="correct-answer answers">
+                        <h4>Correct Answer: </h4>
+                        <li>@item.CorrectAnswer</li>
+                    </div>
+                    <!-- /.form-group -->
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-danger" onClick=Delete("/Admin/Questions/Delete/@item.Id")>Delete</a>
+                </div>
+            </div>
+
+        }
+    </div>
+    <!-- /.container-fluid -->
+</section>
+@section Scripts {
+    <script src="~/Admin/ajax/question.js"></script>
+    @{
+        await Html.RenderPartialAsync("_Notification");
+    }
+}

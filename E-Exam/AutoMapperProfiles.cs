@@ -68,4 +68,16 @@ namespace File_Sharing
             CreateMap<TbModelType, ModelTypeVM>();
         }
     }
+
+    public class QuestionProfile : Profile
+    {
+        public QuestionProfile()
+        {
+            CreateMap<QuestionVM, TbQuestion>();
+            //.ForMember(x => x.CreationDate, op => op.Ignore())
+            //.ForMember(x => x.UploadId, op => op.Ignore());
+
+            CreateMap<TbQuestion, QuestionVM>();
+        }
+    }
 }

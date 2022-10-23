@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+Qwo0jXjgww1w1/B93QCMkq+TEro2jltBy9chfXBmZg=",
+  "Hash": "ViPMXyGM70TggyaRlSSEpSxcR1XEQthXExX6o9dxHEs=",
   "Source": "E-Exam",
   "BasePath": "_content/E-Exam",
   "Mode": "Default",
@@ -100,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Admin\\ajax\\department.js"
+    },
+    {
+      "Identity": "E:\\Asp.net Projects\\E-Exam\\E-Exam\\wwwroot\\Admin\\ajax\\exam.js",
+      "SourceId": "E-Exam",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Asp.net Projects\\E-Exam\\E-Exam\\wwwroot\\",
+      "BasePath": "_content/E-Exam",
+      "RelativePath": "Admin/ajax/exam.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Admin\\ajax\\exam.js"
     },
     {
       "Identity": "E:\\Asp.net Projects\\E-Exam\\E-Exam\\wwwroot\\Admin\\ajax\\Level.js",

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using E_Exam.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,5 +16,6 @@ namespace E_Exam.Core.ViewModels
         public string? ModelType { get; set; }
         public int ChapterId { get; set; }
         public string? ChapterName { get; set; }
+
     }
 }

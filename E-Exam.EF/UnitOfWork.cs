@@ -22,6 +22,7 @@ namespace E_Exam.EF
         public IModelTypeRepository TbModelTypes { get; private set; }
         public IModelRepository TbModels { get; private set; }
         public IQuestionRepository TbQuestions { get; private set; }
+        public IExamRepository TbExams { get; private set; }
 
 
         public UnitOfWork(ApplicationDbContext context)
@@ -36,6 +37,7 @@ namespace E_Exam.EF
             TbModelTypes = new ModelTypeRepository(context);
             TbModels = new ModelRepository(context);
             TbQuestions = new QuestionRepository(context);
+            TbExams = new ExamRepository(context);
         }
 
         public int Complete()

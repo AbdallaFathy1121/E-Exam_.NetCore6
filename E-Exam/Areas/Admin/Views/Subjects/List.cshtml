@@ -71,6 +71,7 @@
                                         </td>
                                         <td>
                                             <a class="btn btn-secondary" asp-controller="Models" asp-action="ManageModels" asp-route-id="@item.Id">Manage Models</a>
+                                            <a class="btn btn-primary" asp-controller="Exams" asp-action="Index" asp-route-subjectId="@item.Id">Exams</a>
                                         </td>
                                     </tr>
                                 }

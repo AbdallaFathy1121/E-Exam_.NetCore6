@@ -80,4 +80,20 @@ namespace File_Sharing
             CreateMap<TbQuestion, QuestionVM>();
         }
     }
+
+    public class ExamProfile : Profile
+    {
+        public ExamProfile()
+        {
+            CreateMap<ExamVM, TbExam>();
+            //.ForMember(x => x.CreationDate, op => op.Ignore())
+            //.ForMember(x => x.UploadId, op => op.Ignore());
+
+            CreateMap<TbExam, ExamVM>();
+        }
+    }
+
+
+
+
 }

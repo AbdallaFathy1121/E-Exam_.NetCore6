@@ -161,6 +161,35 @@ namespace E_Exam.EF.Migrations
                     b.ToTable("TbDepartmentLevels");
                 });
 
+            modelBuilder.Entity("E_Exam.Core.Models.TbExam", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("AccessCode")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Duration")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ExamName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TbExams");
+                });
+
             modelBuilder.Entity("E_Exam.Core.Models.TbLevel", b =>
                 {
                     b.Property<int>("Id")
@@ -279,6 +308,9 @@ namespace E_Exam.EF.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("TbExamId")
+                        .HasColumnType("int");
+
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -286,6 +318,8 @@ namespace E_Exam.EF.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("LevelId");
+
+                    b.HasIndex("TbExamId");
 
                     b.HasIndex("UserId");
 
@@ -532,6 +566,10 @@ namespace E_Exam.EF.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("E_Exam.Core.Models.TbExam", null)
+                        .WithMany("Subject")
+                        .HasForeignKey("TbExamId");
+
                     b.HasOne("E_Exam.Core.Models.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
@@ -631,6 +669,11 @@ namespace E_Exam.EF.Migrations
             modelBuilder.Entity("E_Exam.Core.Models.TbDepartment", b =>
                 {
                     b.Navigation("DepartmentLevels");
+                });
+
+            modelBuilder.Entity("E_Exam.Core.Models.TbExam", b =>
+                {
+                    b.Navigation("Subject");
                 });
 
             modelBuilder.Entity("E_Exam.Core.Models.TbLevel", b =>

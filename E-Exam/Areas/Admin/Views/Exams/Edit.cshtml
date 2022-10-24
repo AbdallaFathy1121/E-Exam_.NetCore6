@@ -1,0 +1,106 @@
+﻿@model ExamVM
+@{
+    ViewData["Title"] = "Exam";
+}
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                @if (Model == null)
+                {
+                    <h1 class="m-0">Add</h1>
+                }
+                else
+                {
+                    <h1 class="m-0">Edit</h1>
+                }
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Admin">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/Admin/Exams/Edit">@ViewData["Title"]</a></li>
+                    @if (Model == null)
+                    {
+                        <li class="breadcrumb-item active">Add</li>
+                    }
+                    else
+                    {
+                        <li class="breadcrumb-item active">Edit</li>
+                    }
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<section class="content">
+    <div class="container-fluid">
+        <!-- SELECT2 EXAMPLE -->
+        <div class="card card-default">
+            <div class="card-header bg-success">
+                <h3 class="card-title">Add & Edit</h3>
+            </div>
+            <!-- /.card-header -->
+            <form role="form" method="post" asp-action="Save">
+
+                @if (Model == null)
+                {
+                    <input type="hidden" asp-for="Id" value="0">
+                }
+                else
+                {
+                    <input type="hidden" asp-for="Id">
+                }
+
+                @*Subject Id*@
+                <input type="hidden" value="@ViewBag.SubjectId" asp-for="SubjectId" />
+
+                <div class="card-body">
+                    @*Exam Name*@
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Exam Name</label>
+                        <input asp-for="ExamName" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Exam">
+                        <span class="text-danger" asp-validation-for="ExamName"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            @*Duration*@
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Duration per minute</label>
+                                <input asp-for="Duration" type="number" class="form-control" id="exampleInputEmail1" placeholder="Enter Duration">
+                                <span class="text-danger" asp-validation-for="Duration"></span>
+                            </div>
+                        </div>
+                        @*Start DateTime*@
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Start Date and time:</label>
+                                <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
+                                    <input type="datetime-local" asp-for="StartDateTime" class="form-control datetimepicker-input" data-target="#reservationdatetime">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </form>
+
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        await Html.RenderPartialAsync("_Notification");
+    }
+}

@@ -169,8 +169,8 @@ namespace E_Exam.EF.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("AccessCode")
-                        .HasColumnType("int");
+                    b.Property<string>("AccessCode")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Duration")
                         .HasColumnType("int");

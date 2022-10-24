@@ -11,7 +11,7 @@ namespace E_Exam.Core.ViewModels
         public int Id { get; set; }
         public string ExamName { get; set; }
         public int SubjectId { get; set; }
-        public int AccessCode { get; set; }
+        public string? AccessCode { get; set; }
         public DateTime StartDateTime { get; set; }
         public int Duration { get; set; }
     }

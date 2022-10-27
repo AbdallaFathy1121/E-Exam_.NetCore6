@@ -20,6 +20,7 @@ namespace E_Exam.Core
         IModelRepository TbModels { get; }
         IQuestionRepository TbQuestions { get; }
         IExamRepository TbExams { get; }
+        IExamCollectionRepository TbExamCollections { get; }
 
 
         int Complete();

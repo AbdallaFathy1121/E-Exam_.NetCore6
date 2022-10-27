@@ -25,6 +25,7 @@ namespace E_Exam.EF
         public DbSet<TbModel> TbModels { get; set; }
         public DbSet<TbQuestion> TbQuestions { get; set; }
         public DbSet<TbExam> TbExams { get; set; }
+        public DbSet<TbExamCollection> TbExamCollections { get; set; }
 
     }
 }

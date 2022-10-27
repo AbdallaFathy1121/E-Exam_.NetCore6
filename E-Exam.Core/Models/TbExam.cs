@@ -9,6 +9,11 @@ namespace E_Exam.Core.Models
 {
     public class TbExam
     {
+        public TbExam()
+        {
+            ExamCollections = new HashSet<TbExamCollection>();
+        }
+
         public int Id { get; set; }
         public string ExamName { get; set; }
         public int SubjectId { get; set; }
@@ -18,5 +23,6 @@ namespace E_Exam.Core.Models
 
         // Relations
         public DbSet<TbSubject>? Subject { get; set; }
+        public ICollection<TbExamCollection>? ExamCollections { get; set; }
     }
 }

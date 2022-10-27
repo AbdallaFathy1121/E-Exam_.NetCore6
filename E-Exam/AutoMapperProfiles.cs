@@ -93,7 +93,17 @@ namespace File_Sharing
         }
     }
 
+    public class ExamCollectionsProfile : Profile
+    {
+        public ExamCollectionsProfile()
+        {
+            CreateMap<ExamCollectionVM, TbExamCollection>();
+            //.ForMember(x => x.CreationDate, op => op.Ignore())
+            //.ForMember(x => x.UploadId, op => op.Ignore());
 
+            CreateMap<TbExamCollection, ExamCollectionVM>();
+        }
+    }
 
 
 }

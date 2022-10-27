@@ -116,7 +116,12 @@ namespace E_Exam.EF.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("TbExamCollectionId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("TbExamCollectionId");
 
                     b.ToTable("TbChapters");
                 });
@@ -190,6 +195,34 @@ namespace E_Exam.EF.Migrations
                     b.ToTable("TbExams");
                 });
 
+            modelBuilder.Entity("E_Exam.Core.Models.TbExamCollection", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("ChapterId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExamId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ModelTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumberOfQuestions")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TbExamCollections");
+                });
+
             modelBuilder.Entity("E_Exam.Core.Models.TbLevel", b =>
                 {
                     b.Property<int>("Id")
@@ -246,11 +279,16 @@ namespace E_Exam.EF.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int?>("TbExamCollectionId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TbExamCollectionId");
 
                     b.ToTable("TbModelTypes");
                 });
@@ -308,6 +346,9 @@ namespace E_Exam.EF.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("TbExamCollectionId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("TbExamId")
                         .HasColumnType("int");
 
@@ -318,6 +359,8 @@ namespace E_Exam.EF.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("LevelId");
+
+                    b.HasIndex("TbExamCollectionId");
 
                     b.HasIndex("TbExamId");
 
@@ -482,6 +525,21 @@ namespace E_Exam.EF.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("TbExamTbExamCollection", b =>
+                {
+                    b.Property<int>("ExamCollectionsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExamId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ExamCollectionsId", "ExamId");
+
+                    b.HasIndex("ExamId");
+
+                    b.ToTable("TbExamTbExamCollection");
+                });
+
             modelBuilder.Entity("TbModelTbQuestion", b =>
                 {
                     b.Property<int>("ModelId")
@@ -510,6 +568,13 @@ namespace E_Exam.EF.Migrations
                     b.Navigation("Department");
 
                     b.Navigation("Level");
+                });
+
+            modelBuilder.Entity("E_Exam.Core.Models.TbChapter", b =>
+                {
+                    b.HasOne("E_Exam.Core.Models.TbExamCollection", null)
+                        .WithMany("Chapter")
+                        .HasForeignKey("TbExamCollectionId");
                 });
 
             modelBuilder.Entity("E_Exam.Core.Models.TbDepartmentLevel", b =>
@@ -558,6 +623,13 @@ namespace E_Exam.EF.Migrations
                     b.Navigation("Subject");
                 });
 
+            modelBuilder.Entity("E_Exam.Core.Models.TbModelType", b =>
+                {
+                    b.HasOne("E_Exam.Core.Models.TbExamCollection", null)
+                        .WithMany("ModelType")
+                        .HasForeignKey("TbExamCollectionId");
+                });
+
             modelBuilder.Entity("E_Exam.Core.Models.TbSubject", b =>
                 {
                     b.HasOne("E_Exam.Core.Models.TbLevel", "Level")
@@ -565,6 +637,10 @@ namespace E_Exam.EF.Migrations
                         .HasForeignKey("LevelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("E_Exam.Core.Models.TbExamCollection", null)
+                        .WithMany("Subject")
+                        .HasForeignKey("TbExamCollectionId");
 
                     b.HasOne("E_Exam.Core.Models.TbExam", null)
                         .WithMany("Subject")
@@ -651,6 +727,21 @@ namespace E_Exam.EF.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("TbExamTbExamCollection", b =>
+                {
+                    b.HasOne("E_Exam.Core.Models.TbExamCollection", null)
+                        .WithMany()
+                        .HasForeignKey("ExamCollectionsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("E_Exam.Core.Models.TbExam", null)
+                        .WithMany()
+                        .HasForeignKey("ExamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("TbModelTbQuestion", b =>
                 {
                     b.HasOne("E_Exam.Core.Models.TbModel", null)
@@ -673,6 +764,15 @@ namespace E_Exam.EF.Migrations
 
             modelBuilder.Entity("E_Exam.Core.Models.TbExam", b =>
                 {
+                    b.Navigation("Subject");
+                });
+
+            modelBuilder.Entity("E_Exam.Core.Models.TbExamCollection", b =>
+                {
+                    b.Navigation("Chapter");
+
+                    b.Navigation("ModelType");
+
                     b.Navigation("Subject");
                 });
 

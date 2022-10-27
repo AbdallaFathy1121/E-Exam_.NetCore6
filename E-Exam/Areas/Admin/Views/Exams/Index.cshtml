@@ -52,7 +52,7 @@
                                         <td>@item.Duration minute</td>
                                         <td>
                                             <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                                            <a class="btn btn-primary" asp-action="Selection" asp-route-id="@item.Id">Selections</a>
+                                            <a class="btn btn-primary" asp-Controller="ExamCollections" asp-action="Index" asp-route-id="@item.Id--@ViewBag.SubjectId">Exam Collections</a>
                                             <a class="btn btn-danger" onClick=Delete("/Admin/Exams/Delete/@item.Id")>Delete</a>
                                         </td>
                                     </tr>
